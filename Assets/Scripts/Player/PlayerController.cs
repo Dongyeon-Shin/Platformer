@@ -33,6 +33,10 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetBool("IsSoaring", false);
         }
+        else if (rigidbody.velocity.y == 0 && isGround)
+        {
+            animator.SetBool("IsFloating", false);
+        }
         Move();
         
     }
@@ -50,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnJump(InputValue value)
     {
-        if (value.isPressed)
+        if (value.isPressed && isGround)
             Jump();
     }
 
